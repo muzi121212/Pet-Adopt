@@ -1,10 +1,16 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import Colors from '../../constants/Colors'
+import { router, useRouter } from 'expo-router'
 
 const PetListItem = ({pet}) => {
+    const Router = useRouter();
   return (
-    <View style={{
+    <TouchableOpacity onPress={()=>router.push({
+        pathname:'/pet-details',
+        params:pet
+    })}
+    style={{
         padding:10, 
         marginRight:15,
         backgroundColor:Colors.WHITE,
@@ -34,7 +40,7 @@ const PetListItem = ({pet}) => {
         backgroundColor: Colors.LIGHT_PRIMARY
      }}>{pet.age}YRS</Text>
      </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 
